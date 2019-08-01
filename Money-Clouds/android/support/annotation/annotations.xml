@@ -1,0 +1,5 @@
+<root>
+    <item name='android.support.annotation.LayoutRes'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>
