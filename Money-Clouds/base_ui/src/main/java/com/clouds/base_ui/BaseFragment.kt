@@ -3,6 +3,7 @@ package com.clouds.base_ui
 
 import android.content.Context
 import android.os.Bundle
+import android.support.annotation.IdRes
 import android.support.annotation.LayoutRes
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -29,7 +30,7 @@ abstract class BaseFragment : Fragment() {
 
         mTitleLayout = mContentView!!.findViewById<View>(R.id.title_layout)
 
-        if(mTitleLayout != null){
+        if (mTitleLayout != null) {
 
         }
 
@@ -48,4 +49,11 @@ abstract class BaseFragment : Fragment() {
 
     abstract fun bindLayout(): Int
 
+    private val NO_ID: Int = -1
+
+    fun <T : View> findViewById(@IdRes id: Int): T? {
+        return if (id == NO_ID) {
+            null
+        } else mContentView!!.findViewById(id)
+    }
 }
