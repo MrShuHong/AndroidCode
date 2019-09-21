@@ -2,6 +2,7 @@ package com.example.core.net;
 
 import com.example.core.app.ConfigKeys;
 import com.example.core.app.ProjectInit;
+import com.example.core.net.rx.RxRestService;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,6 +18,8 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
  * @date 2019-09-19
  */
 public final class RestCreator {
+
+
 
     private static final class RetrofitHolder {
         private static final String BASE_URL = ProjectInit.getConfiguration(ConfigKeys.API_HOST);
@@ -45,5 +48,16 @@ public final class RestCreator {
      */
     public static RestService getRestService(){
         return RestServiceHolder.REST_SERVICE;
+    }
+
+    //提供接口让调用者得到retrofit对象
+    private static final class RxRestServiceHolder{
+        private static final RxRestService REST_SERVICE=RetrofitHolder.RETROFIT_CLIENT.create(RxRestService.class);
+    }
+    /**
+     * 获取对象
+     */
+    public static RxRestService getRxRestService(){
+        return RxRestServiceHolder.REST_SERVICE;
     }
 }
