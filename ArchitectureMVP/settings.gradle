@@ -1,0 +1,1 @@
+include ':app', ':core', ':isolation_processor'
